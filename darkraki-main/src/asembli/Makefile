@@ -6,9 +6,9 @@ ifndef HOST_CC
 endif
 
 ifndef CROSS
-    ARCH = rv32e
+    ARCH = rv32i
     
-    ABI = ilp32e
+    ABI = ilp32
 
 #    CROSS = riscv64-linux-gnu
     CROSS = riscv64-unknown-elf

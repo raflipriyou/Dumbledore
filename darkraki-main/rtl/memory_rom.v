@@ -3,16 +3,16 @@
 module memory_rom
 	#(
 		parameter ROM_ORIGIN  = 32'h0,			// ROM Memory Map
-		parameter ROM_LENGTH  = 32'h10000,	// ROM size 64 KB
+		parameter ROM_LENGTH  = 32'h400,	// ROM size 64 KB
 		parameter MEM_BIT		 = 32,
 		parameter MEM_SIZE	 = 1024
 	)
 	(
-	input					iROM_CLK,				// input clock
-	output [31:0]	oROM_DATA, 			// output Data
-	input					iROM_CE,     		// input Chip Enable
+	input				iROM_CLK,				// input clock
+	output [31:0]		oROM_DATA, 			// output Data
+	input				iROM_CE,     		// input Chip Enable
 	input 				iROM_RD, 				// input Read Enable
-	input [31:0]	iROM_ADDR 			// input Address
+	input [31:0]		iROM_ADDR 			// input Address
 	);
 
    
@@ -30,7 +30,7 @@ module memory_rom
 	initial begin
 	  //$readmemh("/home/raflipriyou/darkraki-main/src/darksocv.mem", mem, 0, MEM_SIZE-1);
 	  //$readmemh("/home/raflipriyou/darkraki-main/rtl/memory_rom_init.hex", mem, 0, MEM_SIZE-1);
-	  //$readmemh("/home/raflipriyou/darkraki-main/src/asembli/asembli.mem", mem, 0, MEM_SIZE-1);
+	  //$readmemh("../src/asembli/asembli.mem", mem, 0, MEM_SIZE-1);
 	  $readmemh("../src/fibonacci/tester.mem", mem, 0, MEM_SIZE-1);
 	end
 

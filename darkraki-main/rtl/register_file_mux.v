@@ -113,7 +113,7 @@ module register_file_mux
 	
 	always @(posedge CLK)
 	begin
-		$display("data di mux = 0x%x", i_X_REG_OUT2);
+		//$display("data di mux = 0x%x", i_X_REG_OUT2);
 	end
 
 endmodule

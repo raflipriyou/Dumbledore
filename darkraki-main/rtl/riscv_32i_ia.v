@@ -62,7 +62,7 @@ module riscv_32i_ia
 	wire [31:0] f_reg_out1,f_reg_out2,f_reg_in;
 	wire [31:0] x_reg_out1,x_reg_out2,x_reg_in;
 	
-	wire 		a_ram_ce,a_ram_rd,a_ram_wr,b_ram_ce,b_ram_rd,b_ram_wr,c_ram_ce,c_ram_rd,c_ram_wr;
+	wire 		stat,ram_wr,ram_rd,a_ram_ce,a_ram_rd,a_ram_wr,b_ram_ce,b_ram_rd,b_ram_wr,c_ram_ce,c_ram_rd,c_ram_wr;
 	wire [31:0] a_ram_address,b_ram_address,c_ram_address;
 	wire [31:0] a_ram_data_read,a_ram_data_write,b_ram_data_read,b_ram_data_write,c_ram_data_read,c_ram_data_write;
 		
@@ -264,7 +264,7 @@ module riscv_32i_ia
 		
 		.oRAM_CE(b_ram_ce),
 		// .oRAM_RD(b_ram_rd),
-		.oRAM_WR(b_ram_wr),
+		//.oRAM_WR(b_ram_wr),
 		.oRAM_ADDR(b_ram_address),
 		.iRAM_DATA(b_ram_data_read),
 		.oRAM_DATA(b_ram_data_write)
@@ -293,7 +293,8 @@ module riscv_32i_ia
 		.oRS2(e_rs2),
 		.iREG_OUT1(e_reg_out1),
 		.iREG_OUT2(e_reg_out2),
-		.oPCBR(pcbr_type_b)
+		.oPCBR(pcbr_type_b),
+		.status(stat)
 	);
 	
 	instruction_type_j u10(
@@ -302,7 +303,8 @@ module riscv_32i_ia
 		.iPC(pc),
 		.oRD(f_rd),
 		.oREG_IN(f_reg_in),
-		.oPCBR(pcbr_type_j)
+		.oPCBR(pcbr_type_j),
+		.status(stat)
 	);
 
 endmodule

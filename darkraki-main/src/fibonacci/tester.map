@@ -1,15 +1,9 @@
 
 Discarded input sections
 
- .text          0x0000000000000000        0x0 tester.o
+ .text          0x0000000000000000       0x50 tester.o
  .data          0x0000000000000000        0x0 tester.o
  .bss           0x0000000000000000        0x0 tester.o
- .text.startup  0x0000000000000000        0x8 tester.o
- .comment       0x0000000000000000       0x2c tester.o
- .note.GNU-stack
-                0x0000000000000000        0x0 tester.o
- .riscv.attributes
-                0x0000000000000000       0x1a tester.o
 
 Memory Configuration
 
@@ -29,6 +23,10 @@ Address of section .text set to 0x0
  *(.text)
  *(.text)
  *(.rodata*)
+
+.text.startup   0x0000000000000100       0x38
+ .text.startup  0x0000000000000100       0x38 tester.o
+                0x0000000000000100                main
 
 .data
  *(.sbss)
@@ -55,3 +53,17 @@ Address of section .text set to 0x0
                 0x0000000000000100                _sstack = .
 LOAD tester.o
 OUTPUT(tester.elf elf32-littleriscv)
+
+.comment        0x0000000000000000       0x2b
+ .comment       0x0000000000000000       0x2b tester.o
+                                         0x2c (size before relaxing)
+
+.note.GNU-stack
+                0x0000000000000000        0x0
+ .note.GNU-stack
+                0x0000000000000000        0x0 tester.o
+
+.riscv.attributes
+                0x0000000000000000       0x1a
+ .riscv.attributes
+                0x0000000000000000       0x1a tester.o

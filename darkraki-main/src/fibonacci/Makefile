@@ -50,7 +50,7 @@ CCFLAGS += -D__RISCV__ -DBUILD="\"$(BUILD)\"" -DARCH="\"$(ARCH)\""
 #CCFLAGS += -DSMALL # enable this to make FW smaller!
 ASFLAGS = -march=$(ARCH)
 ARFLAGS = -rcs
-LDFLAGS = -Map=$(PROJ).map -m elf32lriscv -static -gc-sections  --entry=_start -Ttext=0 -T$(PROJ).ld
+LDFLAGS = -Map=$(PROJ).map -m elf32lriscv -static -gc-sections  --entry=main -Ttext=0 -T$(PROJ).ld
 LDLIBS  = $(DARKLIBC)/darklibc.a
 CPFLAGS = -P 
 
@@ -85,7 +85,7 @@ TARGETS5 = $(PROJ).out
 
 .PHONY: all
 
-all: $(ASMS) $(TARGETS1) $(TARGETS2) $(TARGETS3) $(TARGETS4) $(TARGETS5) $(OBJS) $(LIBS) $(ELEP) $(PROJ).a 
+all: $(ASMS) $(TARGETS1) $(TARGETS2) $(TARGETS3) $(TARGETS4) $(TARGETS5) $(OBJS) $(LIBS) $(ELEP) $(PROJ).a $(LINK)
 #	@echo sources ok for $(TARGETS).
 
 res:
@@ -106,6 +106,7 @@ $(PROJ).a: $(OBJS)
 $(PROJ).out: $(OBJS) $(PROJ).ld $(LIBS)
 	$(RL) $(LDLIBS)
 	$(LD) $(LDFLAGS) -o $@ $(OBJS) $(LDLIBS)
+	$(OD) $(ODFLAGS) $@ > $(PROJ).S
 
 $(PROJ).ld: $(PROJ).lds Makefile
 	$(CPP) $(CPFLAGS) $(PROJ).lds $(PROJ).ld

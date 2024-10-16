@@ -1,8 +1,8 @@
 
 module memory_ram
 	#(
-		parameter RAM_ORIGIN	= 32'h100,		// RAM Memory Map
-		parameter RAM_LENGTH	= 32'h08000,		// RAM size 32 KB
+		parameter RAM_ORIGIN	= 32'h400,		// RAM Memory Map
+		parameter RAM_LENGTH	= 32'h100,		// RAM size 32 KB
 		parameter MEM_BIT		= 8,
 		parameter MEM_SIZE		= 256
 	)
@@ -34,14 +34,14 @@ module memory_ram
 
 	always @(posedge iRAM_CLK  or negedge iRAM_RST)
 	begin
-		$display("RAM -> CE: %b, RD: %b, WR: %b, iRAM_ADDR: 0x%x, oRAM_DATA: 0x%x, iRAM_DATA: 0x%x",iRAM_CE, iRAM_RD, iRAM_WR, iRAM_ADDR, oRAM_DATA, iRAM_DATA);
+		//$display("RAM -> CE: %b, RD: %b, WR: %b, iRAM_ADDR: 0x%x, oRAM_DATA: 0x%x, iRAM_DATA: 0x%x",iRAM_CE, iRAM_RD, iRAM_WR, iRAM_ADDR, oRAM_DATA, iRAM_DATA);
 		if(iRAM_WR==1)
 		begin
 			if(is_mem_valid==1)
 			begin
 				mem[tmp_addr] = iRAM_DATA;
 				$writememh("../rtl/memory_ram_init.hex", mem);
-				$display("Hasil baca memori address : 0x%x, data : 0x%x", tmp_addr, mem[tmp_addr]);
+				//$display("Hasil baca memori address : 0x%x, data : 0x%x", tmp_addr, mem[tmp_addr]);
 
 			end
 		end

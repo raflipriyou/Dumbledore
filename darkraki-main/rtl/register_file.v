@@ -11,8 +11,8 @@ module register_file (
 );
 
 integer i; 
-integer counter = 0;  
-reg [31:0] regfile [0:32];
+//integer counter = 0;  
+reg [31:0] regfile [0:31];
 
 assign oREG_OUT1 = regfile[iRS1];
 assign oREG_OUT2 = regfile[iRS2];
@@ -29,7 +29,8 @@ initial begin
 		begin
 			regfile[i] = 0;
 		end
-	regfile[0] = 32'b0;
+	//regfile[0] = 32'b0;
+	regfile[0] = 0;
 end
 
 
@@ -39,13 +40,15 @@ always @(posedge iCLK or negedge iRST)
 		if (iRST==0)
 			for (i = 0; i <32; i = i + 1 )
 			begin
-				regfile[i] = 0;
+				//regfile[i] = 0;
+				regfile[i] = iREG_IN;
 			end
 		else
 			begin
 				regfile[iRD] = iREG_IN;
+				regfile[0] = 0;
 				$display("#REGISTERS:");
-				$display("oREG_OUT1 : 0x%x, oREG_OUT2 : 0x%x", oREG_OUT1, oREG_OUT2);
+				//$display("oREG_OUT1 : 0x%x, oREG_OUT2 : 0x%x", oREG_OUT1, oREG_OUT2);
 				//$display("iRD = 0x%x, iRS1 = 0x%x, iRS2 = 0x%x, iREG_IN = 0x%x", iRD,iRS1,iRS2, iREG_IN);
 				for (i = 0; i <32; i = i + 8 )
 					$display("#REG [%0d]: [0x%x, 0x%x, 0x%x, 0x%x, 0x%x, 0x%x, 0x%x, 0x%x]",i,regfile[i+0],regfile[i+1],regfile[i+2],regfile[i+3],regfile[i+4],regfile[i+5],regfile[i+6],regfile[i+7]);

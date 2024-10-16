@@ -38,6 +38,7 @@ module program_counter
 	// coba make if kalo pcbranch ngak 0, maka harus dihold dulu kayaknya
 	// write code here	...	
 	assign pc_next = 	(pcbranch==0) ? pc + 4:
+						(iOpcode==OPCODE_I3) ? pcbranch :
 							pc + pcbranch;
 	
 	always @(posedge iCLK or negedge iRST)

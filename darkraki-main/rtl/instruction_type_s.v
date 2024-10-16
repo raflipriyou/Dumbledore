@@ -61,8 +61,8 @@ module instruction_type_s(
 	
 	assign oREG_IN = 32'h0;
 	
-	always @(posedge iCLK)
-	begin
+	//always @(posedge iCLK)
+	//begin
 		// if(iIR[6:0]==7'h23)
 		// 	begin
 		// 		//$display("INSRUCTION TYPE S -> rd: 0x%x, rs1: 0x%x, rs2: 0x%x",oRD, oRS1, oRS2);
@@ -70,6 +70,6 @@ module instruction_type_s(
 		// 	end
 		//$display("data masuk s = 0x%x", iRAM_DATA);
 		//$display("data keluar s = 0x%x", oRAM_DATA);
-	end
+	//end
 	
 endmodule

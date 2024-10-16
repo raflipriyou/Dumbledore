@@ -849,17 +849,17 @@ Disassembly of section .data:
  baa:	5f693233          	.4byte	0x5f693233
  bae:	697a                	flw	fs2,156(sp)
  bb0:	00727363          	bgeu	tp,t2,bb6 <_data+0x2a>
- bb4:	2c646557          	.4byte	0x2c646557
- bb8:	3020                	fld	fs0,96(s0)
- bba:	2032                	fld	ft0,264(sp)
+ bb4:	7554                	flw	fa3,44(a0)
+ bb6:	2c65                	jal	e6e <_data+0x2e2>
+ bb8:	3120                	fld	fs0,96(a0)
+ bba:	2035                	jal	be6 <_data+0x5a>
  bbc:	2074634f          	fnmadd.s	ft6,fs0,ft7,ft4,unknown
  bc0:	3032                	fld	ft0,296(sp)
  bc2:	3432                	fld	fs0,296(sp)
- bc4:	3120                	fld	fs0,96(a0)
- bc6:	3a31                	jal	4e2 <main+0x2e2>
- bc8:	3931                	jal	7e4 <printf+0x94>
- bca:	313a                	fld	ft2,424(sp)
- bcc:	2030                	fld	fa2,64(s0)
+ bc4:	3020                	fld	fs0,96(s0)
+ bc6:	3a39                	jal	4e4 <main+0x2e4>
+ bc8:	313a3833          	.4byte	0x313a3833
+ bcc:	2034                	fld	fa3,64(s0)
  bce:	3037302b          	.4byte	0x3037302b
  bd2:	0030                	addi	a2,sp,8
  bd4:	7562                	flw	fa0,56(sp)

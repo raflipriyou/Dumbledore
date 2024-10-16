@@ -40,8 +40,9 @@ module instruction_type_i
 	assign imm12 	= iIR[31:20];
 	
 	assign alu_in1 = iREG_OUT1;
-	assign alu_in2 = imm12;
-	
+	//assign alu_in2 = imm12;
+	assign alu_in2 = { {20{imm12[11]}}, imm12[11:0] };
+
 	// instruction i1
 	assign alu_out_i1 = 		(func3=={3'h0}) ?   alu_in1 + alu_in2 :												// add immediate
 								(func3=={3'h4}) ?   alu_in1 ^ alu_in2 :												// xor immediate

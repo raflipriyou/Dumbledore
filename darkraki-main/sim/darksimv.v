@@ -63,8 +63,8 @@ module darksimv;
 
         $display("reset---- (startup)");
         // #100    RES = 0;
-        for (a = 0; a <450; a = a+1 ) begin
-			if(a == 10)
+        for (a = 0; a <5000; a = a+1 ) begin
+			if(a == 500)
             begin
                 RES = 0;
             end

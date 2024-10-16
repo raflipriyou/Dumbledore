@@ -16,7 +16,7 @@
 	.string	"rv32i_zicsr"
 	.align	2
 .LC4:
-	.string	"Wed, 02 Oct 2024 11:19:10 +0700"
+	.string	"Tue, 15 Oct 2024 09:38:14 +0700"
 	.align	2
 .LC5:
 	.string	"build: %s for %s\n"
